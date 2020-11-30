@@ -14,6 +14,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zero.service.Board_listService;
 
 import org.zero.domain.Board_listVO;
+import org.zero.domain.Criteria;
+import org.zero.domain.PageDTO;
+
 import lombok.extern.log4j.Log4j;
 import oracle.net.ano.Service;
 
@@ -35,9 +38,10 @@ public class BoardController {
 	}
 	//일반 게시판
 	@GetMapping("/board_list")
-	public void board_list(Model model){
+	public void board_list(Criteria cri, Model model){
 		log.info("board_list");
 		model.addAttribute("board_list", service_list.getList());
+		model.addAttribute("pageMaker", new PageDTO(cri, 123));
 	}
 	
 	@GetMapping("/down_load")
@@ -68,40 +72,45 @@ public class BoardController {
 		
 	}
 	
-	//목록 글 수정
-	//@PostMapping("/register")
-	@RequestMapping(value="/register", method= {RequestMethod.POST, RequestMethod.GET})
-	public void register(@RequestParam("num") Long num, Board_listVO board_list, Model model){
-		System.out.println(board_list);
-		log.info("/register" + board_list);
-		model.addAttribute("board", service_list.get(num));
-		
+	//목록 글 수정 400오류발생
+	@PostMapping("/register")
+	//@RequestMapping(value="/register", method= {RequestMethod.POST, RequestMethod.GET})
+//	public String register(Board_listVO board_list, RedirectAttributes rttr){
+//		log.info("/register" + board_list);
+//		if(service_list.register(board_list);) {
+//			rttr.addFlashAttribute("result", "success");
+//		}
+//		return "redirect:/front/list";
+//	}
+	
+	@GetMapping("/register")
+	public void register(@RequestParam("num") Long num, Model model){
+		log.info("/register");
+		model.addAttribute("board_list", service_list.get(num));
 	}
 	
 	//글 등록 처리
 	
 	@GetMapping("/Writes")
-	@PreAuthorize("isAuthenticated()")
+	//@PreAuthorize("isAuthenticated()")
 	public void writes() {
 		
 	}
 	
-//	@PreAuthorize("isAuthenticated()")
-//	//@GetMapping("/Writes") 오류발생 나중에 다시 처리 교수님께 물어볼것
-//	@RequestMapping(value="/Writes", method= {RequestMethod.POST, RequestMethod.GET})
-//	public String writes(/*Board_listVO board_list, RedirectAttributes rttr*/){
-//		//System.out.println("생성된 글 : " +board_list);
-//		//return "/front/board_list";
-//		log.info("register: " + board_list);
-//
-//		service_list.register(board_list);
-//
-//		rttr.addFlashAttribute("result", board_list.getNum());
-//	
-//		return "redirect:/front/board_list";
-//	}
+	@PostMapping("/Writes")
+	public String writes(Board_listVO board_list, RedirectAttributes rttr) {
+		log.info("register: " + board_list);
+		
+		service_list.register(board_list);
+		
+		rttr.addFlashAttribute("result", board_list.getNum());
+			
+		return "redirect:/front/board_list";
+		
+	}
 	
-	//글 삭제
+	
+	//글 삭제 400오류
 	@PostMapping("/remove")
 	public String remove(@RequestParam("num") Long num, RedirectAttributes rttr) {
 		log.info("remove......." + num);

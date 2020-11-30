@@ -54,6 +54,24 @@
 						</c:forEach>
 					</tbody>
 				</table>
+				
+				<div class='paging'>
+					<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+						<c:if test="${pageMaker.prev}">
+							<li class="btn_arr first"><a href="#">Previous</a>
+							</li>
+						</c:if>
+						
+						<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+							<li class="on"><a href="#">${num}</a></li>
+						</c:forEach>
+						
+						<c:if test="${pageMaker.next}">
+							<li class="btn_arr prev"><a href="#">Next</a>
+							</li>
+						</c:if>
+					
+				</div>
 			<div class="readmore">
 				<a href="../../front/Writes"><button class="btn btn-3 btn-3e icon-arrow-right">새글쓰기</button></a>
 			</div>

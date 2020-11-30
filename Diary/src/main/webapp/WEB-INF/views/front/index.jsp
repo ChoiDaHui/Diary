@@ -208,11 +208,11 @@
 			<div class="clear"></div>
 <div class="main">
 	<div class="content">
-		<h2>Recent Galleries</h2>
+		<h2>Dairy list</h2>
 		<div class="banner">
 			<a href="../../front/details"><img src="../resources/images/pic1.jpg" alt=""></a>
 		</div>
-		<p class="para-top">The standard chunk of Lorem Ipsum used since the 1500s is those interested.accompanied by English,The standard  standard chunk of Lorem Ipsum used since </p>
+		<p class="para-top">최신글 </p>
 		<div class="readmore">
 			<a href="../../front/details"><button class="btn btn-3 btn-3e icon-arrow-right">Read More</button></a>
 		</div>

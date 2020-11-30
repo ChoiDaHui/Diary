@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -53,10 +54,7 @@ function getThumbFileName(fullFilePath) {
         <div class="det-para">
         	<p ><c:out value="${board_list.user_id }"/></p>
         </div>
-        
-       
-        
-        
+  
         
         <div class="det-pic">
 			<img src="../resources/images/det-pic.jpg" alt="">		

@@ -10,16 +10,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link href="../resources/css/style.css" rel="stylesheet" type="text/css" media="all" />
 </head>
-<script>
+<script  type="text/javascript">
 //썸네일 파일명을 가져오는 함수
-function getThumbFileName(fullFilePath) {
+/*function getThumbFileName(fullFilePath) {
 	var arrString = fullFilePath.split("/");
 	console.log(arrString);
 	arrString.splice(-1, 1, "s_" + arrString[arrString.length - 1]);
 	return arrString.join("/");
-}
-</script>
+}*/
 
+$(document).ready(function() {
+	var formObj = $("form");
+
+	$('button').on("click", function(e){
+		e.preventDefault();
+		var operation = $(this).data("oper");
+		console.log(operation);
+
+		if(operation == 'remove'){
+				formObj.attr("action", "/front/remove");
+			} else if(operation == 'list'){
+					self.location="/front/board_list";
+					return;
+				}
+		formObj.submit();
+		});
+});
+</script>
 
 <body>
 <div class="wrap">
@@ -58,22 +75,22 @@ function getThumbFileName(fullFilePath) {
 			<!-- <input type="hidden" name="img_file" value=""> -->
 			
 			<div class="form-group">
-			<label>Number</label><br><input class="form-control" name='num' value='<c:out value="${board.num}"/>' readonly="readonly">
+			<label>Number</label><br><input class="form-control" name='num' value='<c:out value="${board_list.num}"/>' readonly="readonly">
 			</div>
 			
           <div class="form-group">
-            <label>Title</label><br> <input class="form-control" name='title' value='<c:out value="${board.title }"/>' readonly="readonly">
+            <label>Title</label><br> <input class="form-control" name='title' value='<c:out value="${board_list.title }"/>' readonly="readonly">
           </div>
 			<br>
           <div class="form-group">
             <label>Text area</label><br>
-            <textarea class="form-control"cols="80" rows="10" name='content' ><c:out value="${board.content}"/></textarea>
+            <textarea class="form-control"cols="80" rows="10" name='content' ><c:out value="${board_list.content}"/></textarea>
           </div>
 			<br>
           <div class="form-group">
             <label>Writer</label> <br>
   			<input class="form-control" name='user_id'
-    			value='<c:out value="${board.user_id}"/>' readonly="readonly">
+    			value='<c:out value="${board_list.user_id}"/>' readonly="readonly">
           </div>
           <br>
           <div class="form-group">
@@ -81,7 +98,7 @@ function getThumbFileName(fullFilePath) {
           </div>
           <br>
           <br><br>
-          <button type="submit" class="btn btn-default" data-oper=''>수정</button>
+          <button type="submit" class="btn btn-default" data-oper='list'>수정</button>
           <button type="submit" class="btn btn-default" data-oper='remove'>삭제</button>
           <button type="reset" class="btn btn-default" onclick="location.href='board_list'">글 목록</button>
         </form>
@@ -137,23 +154,4 @@ function getThumbFileName(fullFilePath) {
 	</div>
 </div>
 </body>
-<script type="text/javascript">
-$(document).ready(function() {
-	var formObj = $("form");
-
-	$('button').on("click", function(e){
-		e.preventDefault();
-		var operation = $(this).data("oper");
-		console.log(operation);
-
-		if(operation == 'remove'){
-				formObj.attr("action", "/front/remove");
-			} else if(operation == 'list'){
-					self.location="/front/board_list";
-					return;
-				}
-		formObj.submit();
-		})
-})
-</script>
 </html>
