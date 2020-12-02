@@ -50,4 +50,17 @@ public class Board_listServiceImpl implements Board_listService{
 		return mapper.getList();
 	}
 	
+	@Override
+	public Board_listVO getread() {
+		log.info("getnewList....................");
+		
+		return mapper.getread();
+	}
+	
+//	@Override
+//	public Board_listVO getread(Long num) {
+//		log.info("get........."+ num);
+//		
+//		return mapper.read(num);
+//	}
 }

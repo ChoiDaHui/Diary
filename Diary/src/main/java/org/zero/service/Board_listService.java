@@ -10,4 +10,6 @@ public interface Board_listService {
 	public boolean modify(Board_listVO board_list);
 	public boolean remove(Long num);
 	public List<Board_listVO> getList();
+	public Board_listVO getread();
+	//public Board_listVO getread(Long num);
 }

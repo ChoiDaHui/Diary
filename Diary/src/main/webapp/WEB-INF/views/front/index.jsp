@@ -208,14 +208,20 @@
 			<div class="clear"></div>
 <div class="main">
 	<div class="content">
-		<h2>Dairy list</h2>
+		<p><c:out value="${last_board.num}"></c:out></p>   <h2>Dairy list</h2>
 		<div class="banner">
-			<a href="../../front/details"><img src="../resources/images/pic1.jpg" alt=""></a>
+			<a href="../../front/details"><img src="../resources/images/pic1.jpg" ></a>
 		</div>
-		<p class="para-top">최신글 </p>
+		<div class="getread"> <!-- 최신글 뜨게 하기 -->
+
+					<p><c:out value="${last_board.title}"></c:out></p>
+					<p><c:out value="${last_board.content}"></c:out></p>
+				
+		</div>
 		<div class="readmore">
-			<a href="../../front/details"><button class="btn btn-3 btn-3e icon-arrow-right">Read More</button></a>
+			<a class='move' href='/front/details?num=<c:out value="${board.num}"/>'><button class="btn btn-3 btn-3e icon-arrow-right">Read More</button></a>
 		</div>
+		
 		<div class="banner">
 			<a href="../../front/details"><img src="../resources/images/pic2.jpg" alt=""></a>
 		</div>

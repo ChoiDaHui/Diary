@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE HTML>
 <html>
+
 <head>
 <title>The Free Photo-On Website Template | Blog :: w3layouts</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -55,15 +56,14 @@
 					</tbody>
 				</table>
 				
-				<div class='paging'>
-					<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+				<div class='paging' rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 						<c:if test="${pageMaker.prev}">
 							<li class="btn_arr first"><a href="#">Previous</a>
 							</li>
 						</c:if>
 						
 						<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-							<li class="on"><a href="#">${num}</a></li>
+							<li class="on"><a href="${num}">${num}</a></li>
 						</c:forEach>
 						
 						<c:if test="${pageMaker.next}">

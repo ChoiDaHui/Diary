@@ -2,23 +2,19 @@ package org.zero.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.zero.service.Board_listService;
-
 import org.zero.domain.Board_listVO;
 import org.zero.domain.Criteria;
 import org.zero.domain.PageDTO;
+import org.zero.service.Board_listService;
 
 import lombok.extern.log4j.Log4j;
-import oracle.net.ano.Service;
 
 @Controller//각각 페이지 이동
 @Log4j
@@ -33,7 +29,11 @@ public class BoardController {
 	
 	//메인 화면
 	@GetMapping("/index")
-	public void index() {
+	public void index(Model model) {
+		log.info(service_list.getread());
+		model.addAttribute("last_board", service_list.getread());
+		//model.addAttribute("board_list", service_list.getread());
+		//model.addAttribute("board", service_list.getnewList());
 		
 	}
 	//일반 게시판
@@ -41,6 +41,7 @@ public class BoardController {
 	public void board_list(Criteria cri, Model model){
 		log.info("board_list");
 		model.addAttribute("board_list", service_list.getList());
+		//페이징
 		model.addAttribute("pageMaker", new PageDTO(cri, 123));
 	}
 	
@@ -71,24 +72,24 @@ public class BoardController {
 	public void join_mem() {
 		
 	}
-	
-	//목록 글 수정 400오류발생
-	@PostMapping("/register")
-	//@RequestMapping(value="/register", method= {RequestMethod.POST, RequestMethod.GET})
-//	public String register(Board_listVO board_list, RedirectAttributes rttr){
-//		log.info("/register" + board_list);
-//		if(service_list.register(board_list);) {
-//			rttr.addFlashAttribute("result", "success");
-//		}
-//		return "redirect:/front/list";
-//	}
-	
+
 	@GetMapping("/register")
 	public void register(@RequestParam("num") Long num, Model model){
 		log.info("/register");
 		model.addAttribute("board_list", service_list.get(num));
 	}
 	
+	//목록 글 수정 400오류발생
+	@PostMapping("/register")
+	//@RequestMapping(value="/register", method= {RequestMethod.POST, RequestMethod.GET})
+	public String register(Board_listVO board_list, RedirectAttributes rttr){
+		log.info("/register" + board_list);
+		if(service_list.modify(board_list)) {
+			rttr.addFlashAttribute("result", "success");
+		}
+		return "redirect:/front/list";
+	}
+
 	//글 등록 처리
 	
 	@GetMapping("/Writes")

@@ -34,18 +34,18 @@ public class Board_listServiceTests {
 //		log.info("=====================");
 //	}
 
-	@Test
-	public void testWriters() {
-		Board_listVO board_list = new Board_listVO();
-		board_list.setTitle("예원쨩이 새로 작성하는 제목");
-		board_list.setContent("예원쨩이 새로 작성하는 내용");
-		board_list.setImg_file("예원쨩이 새로 작성한 파일경로");
-		board_list.setUser_id("user01");
-		
-		service_list.register(board_list);
-		
-		log.info("생성된 게시물의 번호 : " + board_list.getNum());
-	}
+//	@Test
+//	public void testWriters() {
+//		Board_listVO board_list = new Board_listVO();
+//		board_list.setTitle("예원쨩이 새로 작성하는 제목");
+//		board_list.setContent("예원쨩이 새로 작성하는 내용");
+//		board_list.setImg_file("예원쨩이 새로 작성한 파일경로");
+//		board_list.setUser_id("user01");
+//		
+//		service_list.register(board_list);
+//		
+//		log.info("생성된 게시물의 번호 : " + board_list.getNum());
+//	}
 	
 //	@Test
 //	public void getList() {
@@ -73,4 +73,10 @@ public class Board_listServiceTests {
 //		board_list.setImg_file("수정된 이미지 파일");
 //		log.info("MODIFY RESULT: " + service_list.modify(board_list));
 //	}
+	
+	
+	@Test
+	public void testgetread() {
+		log.info(service_list.getread());
+	}
 }

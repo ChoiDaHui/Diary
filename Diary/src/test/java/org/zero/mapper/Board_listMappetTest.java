@@ -1,11 +1,15 @@
 package org.zero.mapper;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zero.domain.Board_listVO;
+import org.zero.domain.Criteria;
+
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
@@ -65,5 +69,21 @@ public class Board_listMappetTest {
 //		
 //	}
 
+	@Test
+	public void testPaging() {
+		Criteria cri = new Criteria();
+		
+		List<Board_listVO> list = mapper.getListWithPaging(cri);
+		
+		list.forEach(board_list -> log.info(board_list));
+		System.out.println(list);
+	}
+	
+//	@Test
+//	public void testgetread() {
+//		Board_listVO board_list = mapper.getread();
+//		
+//		log.info(board_list);
+//	}
 	
 }
