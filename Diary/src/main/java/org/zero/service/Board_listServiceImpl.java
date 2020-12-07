@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zero.domain.Board_listVO;
+import org.zero.domain.Criteria;
 import org.zero.mapper.Board_listMapper;
 import lombok.extern.log4j.Log4j;
 
@@ -43,11 +44,18 @@ public class Board_listServiceImpl implements Board_listService{
 		return mapper.remove(num) == 1;
 	}
 
+//	@Override
+//	public List<Board_listVO> getList(Criteria cri) {
+//		log.info("getList....................");
+//		
+//		return mapper.getList();
+//	}
+	
 	@Override
-	public List<Board_listVO> getList() {
-		log.info("getList....................");
+	public List<Board_listVO> getList(Criteria cri) {
+		log.info("get List with criteria:" + cri);
 		
-		return mapper.getList();
+		return mapper.getListWithPaging(cri);
 	}
 	
 	@Override

@@ -48,27 +48,14 @@ select * from list_baord where num > 0
 
 <select id="getListWithPaging" resultType="org.zero.domain.Board_listVO">
 		<![CDATA[
-		SELECT	num,
-				title,
-				content,
-				user_id,
-				img_file,
-				date,
-                UPDATEDATE
-		FROM	(SELECT /*+INDEX_DESC(list_baord pk_board) */
-        				rownum rn,
-        				num,
-        				title,
-        				content,
-        				user_id,
-        				img_file,
-        				date,
-                        UPDATEDATE
-        				
-      			FROM	list_baord
-				WHERE rownum <=20
+		select num, title, content, user_id, "date"
+			from (
+        			select /*+ INDEX_DESC(list_baord XPKCONTENT_LIST)*/
+        			ROWNUM rn, num, title, content, user_id, "date"
+        			from list_baord
+        			where rownum <= #{pageNum} * #{amount}
 				)
-				where rn >10
+		where rn > (#{pageNum} - 1) * #{amount}
   		]]>
 		
 	</select>

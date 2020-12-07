@@ -17,8 +17,10 @@
 	</div>
 	<div class="menu">
 		<ul class="nav">
-			<li class="active"><a href="../../front/index">Home</a></li> 
-			<li><a href="../../front/board_list">Board</a></li>
+			<li class="active"><a href="../../front/index">Home</a></li>
+			 
+			<li><a href="../../front/board_list?pageNum=1&amount=10">Board</a></li>
+			
 			<li><a href="../../front/down_load">Download</a></li>	
 			<li><a href="../../front/contact">Contact</a></li>
 		</ul>

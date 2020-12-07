@@ -11,6 +11,45 @@
 <link href="../resources/css/style.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+			var result = '<c:out value="${result}"/>';
+
+			checkModel(result);
+
+			history.replaceState({}, null, null);
+
+			function checkModel(result) {
+				if (result == '' || history.state) {
+						return;
+					}
+				if(parseInt(result) > 0) {
+						$(".modal-body").html("게시판" + parseInt(result) + "번이 등록되었습니다.");
+					}
+					$("#myModal").modal("show");
+				} 
+			$("#regBtn").on("click", function() {
+				self.location = "/front/board_list"
+				});
+			var actionForm = $("#actionForm");
+
+			$(".paginate_button a").on("click", function(e) {
+				e.preventDefault();
+				console.log('click');
+				actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+				actionForm.submit();
+				});
+
+			// 상세보기 클릭 이벤트
+			/*$(".move").on("click",function(e) {
+				e.preventDefault();
+				actionForm.append("<input type='hidden' name='num' value='" + $(this).attr("href")	+ "'>");
+				actionForm.attr("action", "/board_list/details");
+				actionForm.submit();
+			});*/
+		});
+</script>
 <div class="wrap">
 <div class="header-right">
 	<div class="logo">
@@ -19,7 +58,7 @@
 	<div class="menu">
 		<ul class="nav">
 			<li><a href="../../front/index">Home</a></li> 
-			<li class="active"><a href="../../front/board_list">Board</a></li>
+			<li class="active"><a href="../../front/board_list?pageNum=1&amount=10">Board</a></li>
 			<li><a href="../../front/down_load">Download</a></li>	
 			<li><a href="../../front/contact">Contact</a></li>
 		</ul>
@@ -56,22 +95,33 @@
 					</tbody>
 				</table>
 				
-				<div class='paging' rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-						<c:if test="${pageMaker.prev}">
-							<li class="btn_arr first"><a href="#">Previous</a>
-							</li>
+				<div class="page_wrap">
+   					<div class="page_nation">
+   					
+   					<c:if test="${pageMaker.prev}">
+							<li class="paginate_button arrow prev"><a href="${pageMaker.startPage -1}"><</a></li>
 						</c:if>
-						
-						<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-							<li class="on"><a href="${num}">${num}</a></li>
+
+						<c:forEach var="num" begin="${pageMaker.startPage}"	end="${pageMaker.endPage}">
+							<li class="paginate_button  ${pageMaker.cri.pageNum == num ? "active":""}">
+								<a href="${num}">${num}</a>
+							</li>
 						</c:forEach>
-						
+
 						<c:if test="${pageMaker.next}">
-							<li class="btn_arr prev"><a href="#">Next</a>
-							</li>
+							<li class="paginate_buttonarrow next"><a href="${pageMaker.endPage +1 }">></a></li>
 						</c:if>
-					
+   					
+   					
+   						
+   					</div>
 				</div>
+				<form id='actionForm' action="/front/board_list" method='get'>
+					<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+					<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+				</form>
+				
+				
 			<div class="readmore">
 				<a href="../../front/Writes"><button class="btn btn-3 btn-3e icon-arrow-right">새글쓰기</button></a>
 			</div>
@@ -124,5 +174,7 @@
 		</div>
 	</div>
 </div>
+
+
 </body>
 </html>

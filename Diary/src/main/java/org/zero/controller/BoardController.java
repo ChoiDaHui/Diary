@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,7 +41,7 @@ public class BoardController {
 	@GetMapping("/board_list")
 	public void board_list(Criteria cri, Model model){
 		log.info("board_list");
-		model.addAttribute("board_list", service_list.getList());
+		model.addAttribute("board_list", service_list.getList(cri));
 		//페이징
 		model.addAttribute("pageMaker", new PageDTO(cri, 123));
 	}
@@ -56,9 +57,16 @@ public class BoardController {
 	}
 	
 	//글 목록 보기
-	@GetMapping("/details")
-	public void details(@RequestParam("num") Long num, Model model) {
-		log.info("/details");
+//	@GetMapping("/details")
+//	public void details(@RequestParam("num") Long num, @ModelAttribute("cri") Criteria cri, Model model) {
+//		log.info("/details");
+//		//System.out.printf("board : " + service_list.get(num));
+//		model.addAttribute("board_list", service_list.get(num));
+//	}
+	
+	@GetMapping({"/details", "/register"})
+	public void details(@RequestParam("num") Long num, @ModelAttribute("cri") Criteria cri, Model model) {
+		log.info("details page:" +cri.getPageNum() +"amount"+ cri.getAmount());
 		//System.out.printf("board : " + service_list.get(num));
 		model.addAttribute("board_list", service_list.get(num));
 	}
@@ -72,14 +80,14 @@ public class BoardController {
 	public void join_mem() {
 		
 	}
-
-	@GetMapping("/register")
-	public void register(@RequestParam("num") Long num, Model model){
-		log.info("/register");
-		model.addAttribute("board_list", service_list.get(num));
-	}
+//목록 슬 수정
+//	@GetMapping("/register")
+//	public void register(@RequestParam("num") Long num, Model model){
+//		log.info("/register");
+//		model.addAttribute("board_list", service_list.get(num));
+//	}
 	
-	//목록 글 수정 400오류발생
+	//목록 글 수정 
 	@PostMapping("/register")
 	//@RequestMapping(value="/register", method= {RequestMethod.POST, RequestMethod.GET})
 	public String register(Board_listVO board_list, RedirectAttributes rttr){
@@ -91,7 +99,6 @@ public class BoardController {
 	}
 
 	//글 등록 처리
-	
 	@GetMapping("/Writes")
 	//@PreAuthorize("isAuthenticated()")
 	public void writes() {

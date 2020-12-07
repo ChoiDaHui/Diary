@@ -72,11 +72,13 @@ public class Board_listMappetTest {
 	@Test
 	public void testPaging() {
 		Criteria cri = new Criteria();
+		cri.setPageNum(7);
+		cri.setAmount(10);
 		
 		List<Board_listVO> list = mapper.getListWithPaging(cri);
 		
-		list.forEach(board_list -> log.info(board_list));
-		System.out.println(list);
+		list.forEach(board_list -> log.info(board_list.getNum()));
+		
 	}
 	
 //	@Test

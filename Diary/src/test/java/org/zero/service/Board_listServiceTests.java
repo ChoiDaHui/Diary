@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zero.domain.Board_listVO;
+import org.zero.domain.Criteria;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -75,8 +76,13 @@ public class Board_listServiceTests {
 //	}
 	
 	
+//	@Test
+//	public void testgetread() {
+//		log.info(service_list.getread());
+//	}
+	
 	@Test
-	public void testgetread() {
-		log.info(service_list.getread());
+	public void testGetList() {
+		service_list.getList(new Criteria(2, 10)).forEach(board -> log.info(board));
 	}
 }

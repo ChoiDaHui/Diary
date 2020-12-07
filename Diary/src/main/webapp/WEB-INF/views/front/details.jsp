@@ -27,8 +27,8 @@ function getThumbFileName(fullFilePath) {
 	</div>
 	<div class="menu">
 		<ul class="nav">
-			<li class="active"><a href="../../front/index">Home</a></li> 
-			<li><a href="../../front/board_list">Board</a></li>
+			<li><a href="../../front/index">Home</a></li> 
+			<li><a href="../../front/board_list?pageNum=1&amount=10">Board</a></li>
 			<li><a href="../../front/down_load">Download</a></li>	
 			<li><a href="../../front/contact">Contact</a></li>
 		</ul>
@@ -62,10 +62,17 @@ function getThumbFileName(fullFilePath) {
 	
 			<div class="readmore">
 				<a href='/front/register?num=<c:out value="${board_list.num}"/>'><button class="btn btn-3 btn-3e icon-arrow-right">수정</button></a>
-				<a href="../../front/board_list"><button class="btn btn-3 btn-3e icon-arrow-right">목록</button></a>
+				<a href='/front/board_list?<c:out value="${cri.pageNum}&${cri.amount}"/>'><button class="btn btn-3 btn-3e icon-arrow-right">목록</button></a>
 			</div>
 	</div>
 	<div class="clear"></div>
+	
+	<form id='operForm' action="/board_list/register" method="get">
+	<input type='hidden' id='num' name='num' value='<c:out value="${board_list.num}"/>'>
+	<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+	<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+	</form>
+	
 </div>
 </div>
 <div class="clear"></div>
