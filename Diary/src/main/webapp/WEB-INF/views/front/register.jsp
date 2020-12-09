@@ -10,6 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link href="../resources/css/style.css" rel="stylesheet" type="text/css" media="all" />
 </head>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script  type="text/javascript">
 //썸네일 파일명을 가져오는 함수
 /*function getThumbFileName(fullFilePath) {
@@ -35,6 +36,43 @@ $(document).ready(function() {
 				}
 		formObj.submit();
 		});
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+
+	  var formObj = $("form");
+
+	  $('button').on("click", function(e){
+	    
+	    e.preventDefault(); 
+	    
+	    var operation = $(this).data("oper");
+	    
+	    console.log(operation);
+	    
+	    if(operation === 'remove'){
+	      formObj.attr("action", "/front/remove");
+	      
+	    }else if(operation === 'list'){
+	      //move to list
+	      formObj.attr("action", "/front/board_list").attr("method","get");
+
+	      var pageNumTag = $("input[name='pageNum']").clone();
+	      var amountTag = $("input[name='amount']").clone();    
+	      
+	      formObj.empty();
+	      
+	      formObj.append(pageNumTag);
+	      formObj.append(amountTag);
+
+	    }
+	    
+	    formObj.submit();
+	  });
+
 });
 </script>
 
@@ -94,13 +132,13 @@ $(document).ready(function() {
           </div>
           <br>
           <div class="form-group">
-            <label>이미지 파일</label> <input type="file" class="form-control" name='img_file'>
+            <label>이미지 파일</label><input type="file" class="form-control" name='img_file'>
           </div>
           <br>
           <br><br>
-          <button type="submit" class="btn btn-default" data-oper='list'>수정</button>
+          <button type="submit" class="btn btn-default" data-oper='register'>수정</button>
           <button type="submit" class="btn btn-default" data-oper='remove'>삭제</button>
-          <button type="reset" class="btn btn-default" onclick="location.href='board_list'">글 목록</button>
+          <button type="reset" class="btn btn-default" data-oper='list'>글 목록</button>
         </form>
 	</div>
 	<div class="clear"></div>

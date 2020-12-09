@@ -69,19 +69,19 @@ public class Board_listControllerTest {
 //					.getModelMap());
 //		}
 //		
-//		@Test
-//		public void testRegister() throws Exception{
-//			String resultPage = mockMvc
-//					.perform(MockMvcRequestBuilders.post("/front/register")
-//					.param("num", "8")
-//					.param("title", "수정된 테스트 제목")
-//					.param("content", "수정된 테스트 내용")
-//					.param("img_file", "수정된 테스트 이미지 경로")
-//					.param("user_id", "user00"))
-//					.andReturn().getModelAndView().getViewName();
-//			
-//			log.info(resultPage);
-//		}
+		@Test
+		public void testRegister() throws Exception{
+			String resultPage = mockMvc
+					.perform(MockMvcRequestBuilders.post("/front/register")
+					.param("num", "681")
+					.param("title", "수정된 테스트 제목")
+					.param("content", "수정된 테스트 내용")
+					.param("img_file", "수정된 테스트 이미지 경로")
+					.param("user_id", "user01"))
+					.andReturn().getModelAndView().getViewName();
+			
+			log.info(resultPage);
+		}
 		
 //		@Test
 //		public void testRemove() throws Exception{
@@ -92,11 +92,11 @@ public class Board_listControllerTest {
 //			log.info(resultPage);
 //		}
 		
-		@Test
-		public void testListPaging() throws Exception {
-			log.info(mockMvc.perform(MockMvcRequestBuilders.get("/front/board_list")
-					.param("pageNum", "2")
-					.param("amount", "50"))
-					.andReturn().getModelAndView().getModelMap());
-		}
+//		@Test
+//		public void testListPaging() throws Exception {
+//			log.info(mockMvc.perform(MockMvcRequestBuilders.get("/front/board_list")
+//					.param("pageNum", "2")
+//					.param("amount", "50"))
+//					.andReturn().getModelAndView().getModelMap());
+//		}
 }

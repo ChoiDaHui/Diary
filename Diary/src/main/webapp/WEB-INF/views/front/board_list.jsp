@@ -42,12 +42,12 @@
 				});
 
 			// 상세보기 클릭 이벤트
-			/*$(".move").on("click",function(e) {
+			$(".move").on("click",function(e) {
 				e.preventDefault();
 				actionForm.append("<input type='hidden' name='num' value='" + $(this).attr("href")	+ "'>");
-				actionForm.attr("action", "/board_list/details");
+				actionForm.attr("action", "/front/details");
 				actionForm.submit();
-			});*/
+			});
 		});
 </script>
 <div class="wrap">
@@ -87,7 +87,7 @@
 						<c:forEach items="${board_list}" var="board"> 
 							<tr>
 								<td><c:out value="${board.num}"/></td>
-								<td><a class='move' href='/front/details?num=<c:out value="${board.num}"/>'><c:out value="${board.title}"/></a></td>
+								<td><a class='move' href='<c:out value="${board.num}"/>'><c:out value="${board.title}"/></a></td>
 								<td><c:out value="${board.content}"/></td>
 								<td><c:out value="${board.user_id}"/></td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.date}" /></td>
@@ -109,7 +109,7 @@
 						</c:forEach>
 
 						<c:if test="${pageMaker.next}">
-							<li class="paginate_buttonarrow next"><a href="${pageMaker.endPage +1 }">></a></li>
+							<li class="paginate_button arrow next"><a href="${pageMaker.endPage +1}">></a></li>
 						</c:if>
    					
    					

@@ -63,17 +63,17 @@ public class Board_listServiceTests {
 //		log.info("REMOVE RESULT: " + service_list.remove(53L));
 //	}
 //	
-//	@Test
-//	public void testUpdate() {
-//		Board_listVO board_list = service_list.get(57L);
-//		
-//		if(board_list == null) {
-//			return;
-//		}
-//		
-//		board_list.setImg_file("수정된 이미지 파일");
-//		log.info("MODIFY RESULT: " + service_list.modify(board_list));
-//	}
+	@Test
+	public void testUpdate() {
+		Board_listVO board_list = service_list.get(681L);
+		
+		if(board_list == null) {
+			return;
+		}
+		
+		board_list.setImg_file("수정된 이미지 파일");
+		log.info("MODIFY RESULT: " + service_list.modify(board_list));
+	}
 	
 	
 //	@Test
@@ -81,8 +81,8 @@ public class Board_listServiceTests {
 //		log.info(service_list.getread());
 //	}
 	
-	@Test
-	public void testGetList() {
-		service_list.getList(new Criteria(2, 10)).forEach(board -> log.info(board));
-	}
+//	@Test
+//	public void testGetList() {
+//		service_list.getList(new Criteria(2, 10)).forEach(board -> log.info(board));
+//	}
 }

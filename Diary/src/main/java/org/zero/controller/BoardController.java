@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zero.domain.Board_listVO;
 import org.zero.domain.Criteria;
 import org.zero.domain.PageDTO;
 import org.zero.service.Board_listService;
 
+import org.zero.Util.UploadUtils;
 import lombok.extern.log4j.Log4j;
 
 @Controller//각각 페이지 이동
@@ -90,11 +92,14 @@ public class BoardController {
 	//목록 글 수정 
 	@PostMapping("/register")
 	//@RequestMapping(value="/register", method= {RequestMethod.POST, RequestMethod.GET})
-	public String register(Board_listVO board_list, RedirectAttributes rttr){
+	public String register(Board_listVO board_list, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr){
 		log.info("/register" + board_list);
 		if(service_list.modify(board_list)) {
 			rttr.addFlashAttribute("result", "success");
 		}
+		
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
 		return "redirect:/front/list";
 	}
 
@@ -106,7 +111,20 @@ public class BoardController {
 	}
 	
 	@PostMapping("/Writes")
-	public String writes(Board_listVO board_list, RedirectAttributes rttr) {
+	public String writes(MultipartFile[] uploadfile, Board_listVO board_list, RedirectAttributes rttr) {
+		
+//		int index = 0;
+//		for (MultipartFile multipartFile : uploadfile) {
+//			if(multipartFile.getSize() > 0) {
+//				switch (index) {
+//				case 0:
+//					board_list.setImg_file(org.zero.Util.UploadUtils.uploadFormPost(multipartFile, uploadPath));
+//					break;
+//				}
+//			}
+//			index++;
+//		}
+		
 		log.info("register: " + board_list);
 		
 		service_list.register(board_list);

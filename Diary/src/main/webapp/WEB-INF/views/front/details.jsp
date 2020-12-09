@@ -69,8 +69,8 @@ function getThumbFileName(fullFilePath) {
 	
 	<form id='operForm' action="/board_list/register" method="get">
 	<input type='hidden' id='num' name='num' value='<c:out value="${board_list.num}"/>'>
-	<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
-	<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+	<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+	<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
 	</form>
 	
 </div>
