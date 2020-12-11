@@ -36,7 +36,7 @@
 	<div class="artists">
 		<h2>Artists 01</h2>
 		<div class="banner">
-			<a href="../../front/details"><img src="../resourcesimages/pic4.jpg" alt=""></a>
+			<a href="../../front/details"><img src="../resources/images/pic3.jpg" alt=""></a>
 		</div>
 		<p class="para-top">The standard chunk of Lorem Ipsum used since the 1500s is those interested.accompanied by English,The standard  standard chunk of Lorem Ipsum used since </p>
 		<div class="readmore">

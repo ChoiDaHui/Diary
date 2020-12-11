@@ -33,7 +33,7 @@
 <div class="header-left">
 <div class="main" style="margin-top: 0">
 <div class="section group">				<!-- 문의 게시판 -->
-				<div class="col span_1_of_2">
+				<!-- <div class="col span_1_of_2">
 					<div class="contact_info">
 			    	 	<h3>Find Us Here</h3>
 			    	 		<div class="map">
@@ -50,7 +50,7 @@
 				 	 	<p>Email: <span><a href="mailto:@example.com">info@mycompany.com</a></span></p>
 				   		<p>Follow on: <span>Facebook</span>, <span>Twitter</span></p>
 				   </div>
-				</div>				
+				</div>	 -->			
 				<div class="col span_2_of_4">
 				  <div class="contact-form">
 				  	<h3>Contact Us</h3>

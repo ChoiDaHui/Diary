@@ -223,10 +223,6 @@
 		<div class="readmore">
 			<a class='move' href='/front/details?num=<c:out value="${board.num}"/>'><button class="btn btn-3 btn-3e icon-arrow-right">Read More</button></a>
 		</div>
-		
-		<div class="banner">
-			<a href="../../front/details"><img src="../resources/images/pic2.jpg" alt=""></a>
-		</div>
 	</div>
 		<div class="sidebar">
 	<div class="blog">

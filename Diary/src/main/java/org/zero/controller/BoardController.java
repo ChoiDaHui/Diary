@@ -16,7 +16,6 @@ import org.zero.domain.Criteria;
 import org.zero.domain.PageDTO;
 import org.zero.service.Board_listService;
 
-import org.zero.Util.UploadUtils;
 import lombok.extern.log4j.Log4j;
 
 @Controller//각각 페이지 이동
@@ -24,8 +23,8 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/front/*")
 public class BoardController {
 	
-	@Value("${globalConfig.uploadPath}")
-	private String uploadPath;
+//	@Value("${globalConfig.uploadPath}")
+//	private String uploadPath;
 	
 	@Autowired
 	private Board_listService service_list;
@@ -111,7 +110,7 @@ public class BoardController {
 	}
 	
 	@PostMapping("/Writes")
-	public String writes(MultipartFile[] uploadfile, Board_listVO board_list, RedirectAttributes rttr) {
+	public String writes(Board_listVO board_list, RedirectAttributes rttr) {
 		
 //		int index = 0;
 //		for (MultipartFile multipartFile : uploadfile) {
