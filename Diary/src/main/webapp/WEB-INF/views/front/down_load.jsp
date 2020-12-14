@@ -54,48 +54,7 @@
 		</div>
 	</div>
 	</div>
-	<div class="sidebar">
-	<div class="blog">
-		<h2>Blogs</h2>
-	<div class="blog-img">
-		 <img src="../resources/images/blog2.jpg" alt="">
-	</div>
-	  <div class="blog-text">
-          <a href="#" class="link4">augue duis dolore</a><br>
-          <span class="color1">USA (2013)</span><br>
-          <a href="#" class="color2">duis</a> / <a href="#" class="color2">soluta nobis</a><br>
-          <span class="link-top">Lorems: <a href="#" class="color2">Conse ctetur</a> </span> 
-      </div>
-	<div class="clear"></div>
-	</div>
-	<div class="blog">
-	<div class="blog-img">
-		 <img src="../resources/images/blog1.jpg" alt="">
-	</div>
-	  <div class="blog-text">
-          <a href="#" class="link4">augue duis dolore</a><br>
-          <span class="color1">USA (2013)</span><br>
-          <a href="#" class="color2">duis</a> / <a href="#" class="color2">soluta nobis</a><br>
-          <span class="link-top">Lorems: <a href="#" class="color2">Conse ctetur</a> </span> 
-      </div>
-	<div class="clear"></div>
-	</div>
-	<div class="blog">
-	<div class="blog-img">
-		 <img src="../resources/images/blog3.jpg" alt="">
-	</div>
-	  <div class="blog-text">
-          <a href="#" class="link4">augue duis dolore</a><br>
-          <span class="color1">USA (2013)</span><br>
-          <a href="#" class="color2">duis</a> / <a href="#" class="color2">soluta nobis</a><br>
-          <span class="link-top">Lorems: <a href="#" class="color2">Conse ctetur</a> </span> 
-      </div>
-	<div class="clear"></div>
-	</div>
-	<div class="readmore">
-			<a href="../../front/details"><button class="btn btn-3 btn-3e icon-arrow-right">View All</button></a>
-		</div>
-	</div>
+	
 	<div class="clear"></div>
 </div>
 </div>
@@ -107,13 +66,7 @@
 <div class="f-icons">
 <h4>Follow Us</h4>
 	<nav>
-	<ul>
-		<li><a href="#"><img src="images/fb.png" title="facebook" alt=""></a></li>
-		<li><a href="#"><img src="images/twitter.png" title="twitter" alt=""></a></li>
-		<li><a href="#"><img src="images/gplus.png" title="gplus" alt=""></a></li>
-		<li><a href="#"><img src="images/feed.png" title="feed" alt=""></a></li>
-		<li><a href="#"><img src="images/plus.png" title="pinterest" alt=""></a></li>
-	</ul>
+	
 	</nav>
 </div>
 <div class="f-grid">

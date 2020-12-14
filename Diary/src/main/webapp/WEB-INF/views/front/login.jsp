@@ -78,13 +78,7 @@
 <div class="f-icons">
 <h4>Follow Us</h4>
 	<nav>
-	<ul>
-		<li><a href="#"><img src="images/fb.png" title="facebook" alt=""></a></li>
-		<li><a href="#"><img src="images/twitter.png" title="twitter" alt=""></a></li>
-		<li><a href="#"><img src="images/gplus.png" title="gplus" alt=""></a></li>
-		<li><a href="#"><img src="images/feed.png" title="feed" alt=""></a></li>
-		<li><a href="#"><img src="images/plus.png" title="pinterest" alt=""></a></li>
-	</ul>
+	
 	</nav>
 </div>
 <div class="f-grid">
